@@ -1,0 +1,20 @@
+-- create database student if not exists
+
+CREATE DATABASE IF NOT EXISTS `student`;
+
+CREATE TABLE `users` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
+    `phone` VARCHAR(100) NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+);
+
+INSERT INTO `users` (`name`, `email`, `phone`) VALUES 
+('John Doe', 'john.doe@example.com', '9988110022'),
+('David', 'david@example.com', '9110023410'),
+('Glenn', 'glenn@example.com', '9100110022'),
+('Peter', 'peter@example.com', '9098761023')
+;
