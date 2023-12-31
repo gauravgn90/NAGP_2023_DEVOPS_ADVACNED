@@ -75,3 +75,37 @@ To use the Kubernetes YAML files and deploy the API service, follow the instruct
     - Open `/api-docs` like [http://your-service-api-url/api-docs](http://your-service-api-url/api-docs)
     - Swagger UI will be opened
 7.  For more details refer to the individual YAML files and the documentation.
+
+
+
+
+
+
+
+
+
+**Random Note For Kubernetes Setup At Localhost (Ubuntu 20)**
+
+
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.1.50:6443 --token sh3lpr.vmx23bgroaflhgnz \
+	--discovery-token-ca-cert-hash sha256:8682f78286d004d75c9e58974a240b9d5e3816e5853cc3739ed0ba6f47b4ade2 
+
+
+
